@@ -1,9 +1,10 @@
 #### Python Modifier Name ####
 # Description of your Python-based modifier.
 
-from collections import Counter
+from collections import Counter, defaultdict
 from dataclasses import dataclass, field
 from math import factorial
+from itertools import permutations
 
 from ovito.data import DataCollection, DataTable
 from ovito.pipeline import ModifierInterface
@@ -26,13 +27,11 @@ class TCEModifier(ModifierInterface):
         cluster_vector = self.calc.get_feature_vector(atoms)
         names = self.calc.get_feature_label_order()
 
-        unique_clusters = {}
+        unique_clusters = defaultdict(float)
         for (topology, species), feature in zip(names, cluster_vector):
             topology = FrozenMultiset(topology)
             species = FrozenMultiset(species)
-            if (topology, species) in unique_clusters:
-                continue
-            unique_clusters[(topology, species)] = feature.item()
+            unique_clusters[(topology, species)] += feature.item() / factorial(len(species))
 
         table = data.tables.create(
             identifier="cluster counts",

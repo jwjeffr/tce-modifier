@@ -6,7 +6,7 @@ from ovito.pipeline import ModifierInterface
 from traits.api import *
 
 
-class ModifierName(ModifierInterface):
+class TCEModifier(ModifierInterface):
     # def input_caching_hints(self, frame: int, input_slots, **kwargs):
     #     return [frame]
 

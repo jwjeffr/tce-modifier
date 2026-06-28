@@ -3,7 +3,7 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "tce_modifier"
+name = "tce-modifier"
 version = "0.0.1"
 description = "Modifier to compute cluster counts using the tensor cluster expansion formulism"
 keywords = ["ovito", "ovito-extension"]
@@ -14,13 +14,14 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "ovito >= 3.9.1",
+    "tce-lib @ git+https://github.com/MUEXLY/tce-lib.git@f611dc8"
 ]
 
 [project.urls]
-repository = "htts://github.com/jwjeffr/tce-modifier"
+repository = "https://github.com/jwjeffr/tce-modifier"
 
 [project.entry-points.'OVITO.Modifier']
-"Tensor Cluster Expansion Modifier" = "tce_modifier::TCEModifier"
+"Tensor Cluster Expansion Modifier" = "tce_modifier:TCEModifier"
 
 [tool.setuptools.packages.find]
 where = ["src"]

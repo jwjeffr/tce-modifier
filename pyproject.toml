@@ -14,7 +14,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "ovito >= 3.9.1",
-    "tce-lib @ git+https://github.com/MUEXLY/tce-lib.git@f611dc8"
+    "tce-lib @ git+https://github.com/MUEXLY/tce-lib.git@38461f8"
 ]
 
 [project.urls]

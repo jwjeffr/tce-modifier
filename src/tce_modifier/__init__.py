@@ -18,9 +18,9 @@ from multiset import FrozenMultiset
 
 class TCEModifier(ModifierInterface):
 
-    neighbor_cutoffs = List(Float, label="Neighbor Cutoffs", minlen=1)
-    many_body_features = List(List(Int), label="Many Body Features")
-    species = List(String, label="Species", minlen=1)
+    neighbor_cutoffs = List(Float, value=[3.0], label="Neighbor Cutoffs", minlen=1)
+    many_body_features = List(List(Int), value=[], label="Many Body Features")
+    species = List(String, value=[], label="Species", minlen=1)
 
     def modify(self, data: DataCollection, frame: int, **kwargs):
         

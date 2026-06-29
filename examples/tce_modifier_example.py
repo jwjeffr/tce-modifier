@@ -8,18 +8,21 @@ import numpy as np
 def main():
 
     lattice_parameter = 3.16
-    bcc_cutoffs = np.array([0.5 * np.sqrt(3.0), 1.0, np.sqrt(2.0)])
-    calc = TCECalculator(
-        neighbor_cutoffs=lattice_parameter * bcc_cutoffs,
+    modifier = TCEModifier(
+        neighbor_cutoffs=[
+            0.5 * np.sqrt(3.0) * lattice_parameter, 
+            1.0 * lattice_parameter, 
+            np.sqrt(2.0) * lattice_parameter
+        ],
         many_body_features=[
-            (0, 0, 1), (0, 0, 2),
-            (0, 0, 0, 0, 1, 1)
+            [0, 0, 1], [0, 0, 2],
+            [0, 0, 0, 0, 1, 1]
         ],
         species=["W", "Re"]
     )
 
     pipeline = import_file("examples/solution.xyz")
-    pipeline.modifiers.append(TCEModifier(calc=calc))
+    pipeline.modifiers.append(modifier)
 
     for data in pipeline.frames:
         print(data.attributes)

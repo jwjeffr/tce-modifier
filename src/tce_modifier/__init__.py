@@ -9,20 +9,29 @@ from itertools import permutations
 from ovito.data import DataCollection, DataTable
 from ovito.pipeline import ModifierInterface
 from ovito.io.ase import ovito_to_ase
+from traits.api import List, Float, Int, String
 from tce.calculator import TCECalculator
 from numpy.typing import NDArray
 import numpy as np
 from multiset import FrozenMultiset
 
 
-@dataclass
 class TCEModifier(ModifierInterface):
 
-    calc: TCECalculator
+    neighbor_cutoffs = List(Float, label="Neighbor Cutoffs", minlen=1)
+    many_body_features = List(List(Int), label="Many Body Features")
+    species = List(String, label="Species", minlen=1)
 
     def modify(self, data: DataCollection, frame: int, **kwargs):
         
         atoms = ovito_to_ase(data)
+
+        if not hasattr(self, "calc"):
+            self.calc = TCECalculator(
+                neighbor_cutoffs=np.array(self.neighbor_cutoffs),
+                many_body_features=self.many_body_features,
+                species=self.species
+            )
 
         cluster_vector = self.calc.get_feature_vector(atoms)
         names = self.calc.get_feature_label_order()

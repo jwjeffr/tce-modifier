@@ -451,9 +451,18 @@ class TCEModifier(ModifierInterface):
         )
 
         for i, ((top, species), feature) in enumerate(unique_clusters.items()):
-            feature_label_str = f"{'-'.join(str(s) for s in top)}\n{'-'.join(species)}"
+            
+            species = dict(species)
+            cluster_chemical_formula = ''.join(f'{symbol}{count}' for symbol, count in species.items())
+            
+            top = dict(top)
+            topology_formula = '\n'.join(f'{bond + 1}nn x{mult}' for bond, mult in top.items())
+            
+            feature_label_str = f"{cluster_chemical_formula}\n{topology_formula}"
             table.x.add_type_id(i, table, name=f"[{i}]\n{feature_label_str}")
-            data.attributes[feature_label_str] = feature
+            data.attributes[
+                f"{feature_label_str.replace('\n', ' + ')} (ID = {i})"
+            ] = feature
 
         table.y = table.create_property(
             "Count",

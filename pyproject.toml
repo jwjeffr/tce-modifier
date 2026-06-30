@@ -22,7 +22,7 @@ dependencies = [
 repository = "https://github.com/jwjeffr/tce-modifier"
 
 [project.entry-points.'OVITO.Modifier']
-"Tensor Cluster Expansion Modifier" = "tce_modifier:TCEModifier"
+"Tensor cluster expansion" = "tce_modifier:TCEModifier"
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -19,17 +19,19 @@ TODO write docs for the new API
 pipeline = ...
 
 lattice_parameter = 3.16
-bcc_cutoffs = np.array([0.5 * np.sqrt(3.0), 1.0, np.sqrt(2.0)])
-calc = TCECalculator(
-    neighbor_cutoffs=lattice_parameter * bcc_cutoffs,
-    many_body_features=[
-        (0, 0, 1), (0, 0, 2),
-        (0, 0, 0, 0, 1, 1)
+modifier = TCEModifier(
+    neighbor_cutoffs=[
+        0.5 * np.sqrt(3.0) * lattice_parameter, 
+        1.0 * lattice_parameter, 
+        np.sqrt(2.0) * lattice_parameter
     ],
-    species=["W", "Re"]
+    many_body_features=[
+        [0, 0, 1], [0, 0, 2],
+        [0, 0, 0, 0, 1, 1]
+    ]
 )
 
-pipeline.modifiers.append(TCEModifier(calc=calc))
+pipeline.modifiers.append(modifier)
 
 for data in pipeline.frames:
     print(data.attributes)

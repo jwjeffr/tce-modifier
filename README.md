@@ -40,9 +40,9 @@ In summary, this modifier will compute cluster counts according to the features 
 - $N_{\alpha\beta}^{(0)}$: the number of first neighbor bonds between two atoms of type $\alpha$ and $\beta$
 - $N_{\alpha\beta}^{(1)}$: the number of second neighbor bonds between two atoms of type $\alpha$ and $\beta$
 - $N_{\alpha\beta}^{(2)}$: the number of third neighbor bonds between two atoms of type $\alpha$ and $\beta$
-- $N_{\alpha\beta\gamma}^{[(0, 0, 1)]}$: the number of $\alpha$-$\beta$-$\gamma$ three-body clusters containing 2x 1nn and 1x 2nn bonds
-- $N_{\alpha\beta\gamma}^{[(0, 0, 2)]}$: the number of $\alpha$-$\beta$-$\gamma$ three-body clusters containing 2x 1nn and 1x 3nn bonds
-- $N_{\alpha\beta\gamma\delta}^{[(0, 0, 0, 0, 1, 1)]}$: the number of $\alpha$-$\beta$-$\gamma$-$\delta$ four-body clusters containing 4x 1nn and 2x 2nn bonds
+- $N_{\alpha\beta\gamma}^{[(0, 0, 1)]}$: the number of $\alpha$ - $\beta$ - $\gamma$ three-body clusters containing 2x 1nn and 1x 2nn bonds
+- $N_{\alpha\beta\gamma}^{[(0, 0, 2)]}$: the number of $\alpha$ - $\beta$ - $\gamma$ three-body clusters containing 2x 1nn and 1x 3nn bonds
+- $N_{\alpha\beta\gamma\delta}^{[(0, 0, 0, 0, 1, 1)]}$: the number of $\alpha$ - $\beta$ - $\gamma$ - $\delta$ four-body clusters containing 4x 1nn and 2x 2nn bonds
 
 See more complete documentation on `tce-lib` [here](https://muexly.github.io/tce-lib/tce.html) on how these cluster counts are implemented, and our paper [here](https://www.sciencedirect.com/science/article/pii/S0927025625006810) outlining the methodology
 

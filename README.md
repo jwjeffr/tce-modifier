@@ -12,6 +12,15 @@ This modifier uses [tce-lib](https://pypi.org/p/tce-lib) to compute cluster coun
 The modifier's input closely mirrors that of [tce-lib](https://pypi.org/p/tce-lib)'s `tce.calculator.TCECalculator` object:
 
 ## Example
+
+### GUI
+
+![OVITO GUI with tensor cluster expansion modifier](https://raw.githubusercontent.com/jwjeffr/tce-modifier/refs/heads/main/examples/tce-modifier-example.png)
+
+![Rendered OVITO image](https://github.com/jwjeffr/tce-modifier/blob/main/examples/tce-modifier-example-rendered.png?raw=true)
+
+### Python script
+
 ```py
 
 pipeline = ...
@@ -64,7 +73,3 @@ See more complete documentation on `tce-lib` [here](https://muexly.github.io/tce
 
 ## Contact
 - Jacob Jeffries: jwjeffr@clemson.edu
-
-## Mini Demo
-
-TODO demo here with screenshots, or even better a video

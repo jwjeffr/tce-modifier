@@ -9,9 +9,7 @@ Using this modifier, you can track the number of two-body, three-body, four-body
 This modifier uses [tce-lib](https://pypi.org/p/tce-lib) to compute cluster counts via tensor contraction. This is ideal for systems that have pristine, constant geometries. You can use our library for systems with vibrations, but it will be significantly slower, as `tce-lib`'s efficiency relies on caching lattice geometry.
 
 ## Parameters 
-The modifier's input is a `TCECalculator` instance from `tce-lib`.
-
-TODO write docs for the new API
+The modifier's input closely mirrors that of [tce-lib](https://pypi.org/p/tce-lib)'s `tce.calculator.TCECalculator` object:
 
 ## Example
 ```py
@@ -37,6 +35,17 @@ for data in pipeline.frames:
     print(data.attributes)
 ```
 
+In summary, this modifier will compute cluster counts according to the features provided by the user. In the example above, the modifier will compute:
+
+- $N_{\alpha\beta}^{(0)}$: the number of first neighbor bonds between two atoms of type $\alpha$ and $\beta$
+- $N_{\alpha\beta}^{(1)}$: the number of second neighbor bonds between two atoms of type $\alpha$ and $\beta$
+- $N_{\alpha\beta}^{(2)}$: the number of third neighbor bonds between two atoms of type $\alpha$ and $\beta$
+- $N_{\alpha\beta\gamma}^{[(0, 0, 1)]}$: the number of $\alpha$-$\beta$-$\gamma$ three-body clusters containing 2x 1nn and 1x 2nn bonds
+- $N_{\alpha\beta\gamma}^{[(0, 0, 2)]}$: the number of $\alpha$-$\beta$-$\gamma$ three-body clusters containing 2x 1nn and 1x 3nn bonds
+- $N_{\alpha\beta\gamma\delta}^{[(0, 0, 0, 0, 1, 1)]}$: the number of $\alpha$-$\beta$-$\gamma$-$\delta$ four-body clusters containing 4x 1nn and 2x 2nn bonds
+
+See more complete documentation on `tce-lib` [here](https://muexly.github.io/tce-lib/tce.html) on how these cluster counts are implemented, and our paper [here](https://www.sciencedirect.com/science/article/pii/S0927025625006810) outlining the methodology
+
 ## Installation
 - OVITO Pro [integrated Python interpreter](https://docs.ovito.org/python/introduction/installation.html#ovito-pro-integrated-interpreter):
   ```
@@ -50,7 +59,11 @@ for data in pipeline.frames:
   ```
 
 ## Technical information / dependencies
-- Tested on OVITO version [[VersionNumber]]
+- Tested on OVITO version 3.15.5
 
 ## Contact
 - Jacob Jeffries: jwjeffr@clemson.edu
+
+## Mini Demo
+
+TODO demo here with screenshots, or even better a video

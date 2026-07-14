@@ -16,6 +16,7 @@ The modifier's input closely mirrors that of [tce-lib](https://pypi.org/p/tce-li
 
 pipeline = ...
 
+#bcc system with lattice parameter 3.16 and a 3nn cutoff
 lattice_parameter = 3.16
 modifier = TCEModifier(
     neighbor_cutoffs=[

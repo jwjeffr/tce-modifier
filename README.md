@@ -9,7 +9,6 @@ Using this modifier, you can track the number of two-body, three-body, four-body
 This modifier uses [tce-lib](https://pypi.org/p/tce-lib) to compute cluster counts via tensor contraction. This is ideal for systems that have pristine, constant geometries. You can use our library for systems with vibrations, but it will be significantly slower, as `tce-lib`'s efficiency relies on caching lattice geometry.
 
 ## Parameters 
-The modifier's input closely mirrors that of [tce-lib](https://pypi.org/p/tce-lib)'s `tce.calculator.TCECalculator` object:
 
 ## Example
 
@@ -21,9 +20,15 @@ The modifier's input closely mirrors that of [tce-lib](https://pypi.org/p/tce-li
 
 ### Python script
 
+The modifier's input closely mirrors that of [tce-lib](https://pypi.org/p/tce-lib)'s `tce.calculator.TCECalculator` object:
+
 ```py
 
-pipeline = ...
+from ovito.pipeline import Pipeline
+from tce_modifier import TCEModifier
+import numpy as np
+
+pipeline: Pipeline = ...
 
 #bcc system with lattice parameter 3.16 and a 3nn cutoff
 lattice_parameter = 3.16

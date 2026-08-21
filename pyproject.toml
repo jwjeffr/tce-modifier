@@ -14,7 +14,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "ovito >= 3.9.1",
-    "git+https://github.com/MUEXLY/tce-lib.git@f24f33f0bcc2b5b6a7b6b2e9303d43d0326694ba",
+    "tce-lib >= 1.0.2",
     "multiset >= 3.0.0"
 ]
 

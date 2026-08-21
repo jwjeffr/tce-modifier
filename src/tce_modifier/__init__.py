@@ -18,6 +18,9 @@ import numpy as np
 from multiset import FrozenMultiset
 
 
+NEWLINE: str = "\n"
+
+
 class TCEModifier(ModifierInterface):
 
     neighbor_cutoffs = List(
@@ -459,9 +462,9 @@ class TCEModifier(ModifierInterface):
             topology_formula = '\n'.join(f'{bond + 1}nn x{mult}' for bond, mult in top.items())
             
             feature_label_str = f"{cluster_chemical_formula}\n{topology_formula}"
-            table.x.add_type_id(i, table, name=f"[{i}]\n{feature_label_str}")
+            table.x.add_type_id(i, table, name=f"[{i}]{NEWLINE}{feature_label_str}")
             data.attributes[
-                f"{feature_label_str.replace('\n', ' + ')} (ID = {i})"
+                f"{feature_label_str.replace(NEWLINE, ' + ')} (ID = {i})"
             ] = feature
 
         table.y = table.create_property(
